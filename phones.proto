@@ -1,0 +1,9 @@
+message Log {
+  optional int64 time_ms = 1;
+  optional string phone = 2;
+  optional bool present = 3;
+}
+
+message LogFile {
+  repeated Log log = 1;
+}

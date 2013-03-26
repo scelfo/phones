@@ -1,0 +1,4 @@
+config.py
+log
+phones_pb2.py
+*.pyc
