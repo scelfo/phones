@@ -1,6 +1,12 @@
 # Path where the log file should be written.
 LOG_FILE = '/path/to/location/of/output/log'
 
+# Timeout for arp scan packets.
+ARP_SCAN_TIMEOUT_MS = 300
+
+# Use a sliding window to smooth out network problems.
+SIZE_OF_SLIDING_WINDOW = 3
+
 # Phone numbers.
 NUMBERS = {
   'phone_name_1': '+11234567890',

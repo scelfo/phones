@@ -4,9 +4,6 @@ import time
 
 from collections import deque
 
-# Use a sliding window to smooth out network problems.
-SIZE_OF_SLIDING_WINDOW = 3
-
 
 def FormatTime(time_ms):
   return time.asctime(time.localtime(time_ms / 1000))
@@ -55,7 +52,7 @@ def FilterForStateChanges(records):
   for name in records:
     if name not in filtered_records:
       filtered_records[name] = []
-    window = deque([], SIZE_OF_SLIDING_WINDOW)
+    window = deque([], config.SIZE_OF_SLIDING_WINDOW)
     state = None
     for record in records[name]:
       window.append(record)
