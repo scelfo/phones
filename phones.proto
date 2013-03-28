@@ -4,6 +4,17 @@ message Log {
   optional bool present = 3;
 }
 
+message Action {
+  enum State {
+    DISABLED = 0;
+    ENABLED = 1;
+  }
+  optional int64 time_ms = 1;
+  optional string phone = 2;
+  optional State state = 3;
+}
+
 message LogFile {
   repeated Log log = 1;
+  repeated Action action = 2;
 }
