@@ -9,8 +9,8 @@ https://github.com/pettazz/pygooglevoice library.
 
 Add a contab entry to run the home_phone.py script often such as every two minutes like this example:
 
-> */2 * * * * /path/to/home_phone.py
+        */2 * * * * /path/to/home_phone.py
 
 If you don't want to have any emails from cron unless there is a problem use:
 
-> */2 * * * * /path/to/home_phone.py > /dev/null
+        */2 * * * * /path/to/home_phone.py > /dev/null
