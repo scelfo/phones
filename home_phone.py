@@ -32,7 +32,7 @@ def CheckPhones():
 
 def FindStateChangesWithoutEvents(log_file):
   actions = util.ExtractActions(log_file)
-  
+
   state_changes = util.FilterForStateChanges(
       util.ExtractRecords(log_file))
   changed_without_events = {}
@@ -62,7 +62,7 @@ def TogglePhones(log_file, actions):
             prefix = 'Disabling'
             phone.disable()
           print '%s %s: %s for change at %s' % (
-              prefix, phone_name, phone.phoneNumber, 
+              prefix, phone_name, phone.phoneNumber,
               util.FormatTime(action.time_ms))
         except Exception as e:
           print e
