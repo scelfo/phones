@@ -120,9 +120,9 @@ def main(argv):
     action.time_ms = change.time_ms
     action.phone = change.phone
     if change.present:
-      action.state = phones_pb2.Action.ENABLED
-    else:
       action.state = phones_pb2.Action.DISABLED
+    else:
+      action.state = phones_pb2.Action.ENABLED
     pending_actions[phone] = action
 
   for phone in parsed.enable:
