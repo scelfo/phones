@@ -16,12 +16,13 @@ def ReadFile():
     f = open(config.LOG_FILE, 'rb')
     log_file = phones_pb2.LogFile()
     contents = f.read()
+    f.close()
     try:
       contents = zlib.decompress(contents)
     except zlib.error:
+      # Older code wrote uncompressed.
       pass
     log_file.ParseFromString(contents)
-    f.close()
     return log_file
   except IOError:
     print 'File %s not found, creating a new one.' % config.LOG_FILE
