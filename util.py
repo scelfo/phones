@@ -1,6 +1,7 @@
 import config
 import phones_pb2
 import time
+import zlib
 
 from collections import deque
 
@@ -14,7 +15,12 @@ def ReadFile():
   try:
     f = open(config.LOG_FILE, 'rb')
     log_file = phones_pb2.LogFile()
-    log_file.ParseFromString(f.read())
+    contents = f.read()
+    try:
+      contents = zlib.decompress(contents)
+    except zlib.error:
+      pass
+    log_file.ParseFromString(contents)
     f.close()
     return log_file
   except IOError:
@@ -25,7 +31,7 @@ def ReadFile():
 def WriteFile(log_file):
   # Write the new log file to disk.
   f = open(config.LOG_FILE, 'wb')
-  f.write(log_file.SerializeToString())
+  f.write(zlib.compress(log_file.SerializeToString()))
   f.close()
 
 
